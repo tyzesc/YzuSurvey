@@ -5,6 +5,8 @@
 #
 # 2017/12/18 更新日誌
 #  - 學校新增問卷項目，導致 post 失敗，已改成使用 soup.find_all("input", id="radio") 來製作 payload
+# 2018/06/07
+#  - 英語授課會有另外的 checkbox
 
 import requests
 import re
@@ -133,6 +135,12 @@ def doSurvey(url, text):
 	items = soup.find_all("input", type="radio")
 	for item in items:
 		payload[ item.get("name") ] = "1"
+
+	# 2018/06/07 update 英語授課 ($4 是沒進步)
+	items = soup.find_all("input", type="checkbox")
+	for item in items:
+		if item.get("name").count("$4") == 0:
+			payload[ item.get("name") ] = "1" 
 
 	if ta_checked != "checked":
 		print("此課程可能有助教。")
