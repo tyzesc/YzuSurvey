@@ -9,6 +9,8 @@
 #  - 英語授課會有另外的 checkbox
 # 2018/12/17
 #  - payload btOk 偷換成 btSubmit ：）
+# 2019/05/30
+#  - payload btOK 又回來了，兩個一起送也會過，就先這樣吧！
 
 import requests
 import re
@@ -131,7 +133,8 @@ def doSurvey(url, text):
 		"__VIEWSTATEGENERATOR":_VIEWSTATEGENERATOR,
 		"__EVENTVALIDATION":_EVENTVALIDATION,
 		"1473":"上課講解認真、教材豐富。",
-		"btSubmit":"完成"
+		"btSubmit":"完成",
+		"btOK":"完成"
 	}
 	# 2017/12/18 update 學校偷增加幾個新項目需要填寫，寫成這樣好了 (笑)
 	items = soup.find_all("input", type="radio")
