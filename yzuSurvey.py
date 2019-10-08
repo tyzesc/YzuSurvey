@@ -124,7 +124,7 @@ def doSurvey(url, text):
 	tmp_soup = BeautifulSoup(tmp_r.text.encode('utf-8'), 'lxml')
 	getNewEnv(tmp_soup)
 	soup = BeautifulSoup(tmp_r.text.encode('utf-8'), 'lxml')
-	if len(soup.select('#2150_1')):
+	if len(soup.find(id="2150_1")):
 		ta_checked = soup.select('#2150_1')[0].get("checked")
 	else:
 		ta_checked = None
